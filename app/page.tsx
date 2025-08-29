@@ -1,103 +1,87 @@
+"use client";
+import Link from "next/link";
 import Image from "next/image";
+import { projects } from "../lib/projects";
+import { useMemo, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [filter, setFilter] = useState<"ALL" | "PRODUCTION" | "CONCEPT">("ALL");
+  const visible = useMemo(() => {
+    if (filter === "PRODUCTION") return projects.filter(p => p.type === "Production");
+    if (filter === "CONCEPT") return projects.filter(p => p.type === "Concept");
+    return projects;
+  }, [filter]);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="mx-auto max-w-[1400px] px-4 pt-16 pb-10">
+      {/* 상단 필터만 남기고 히어로는 제거 */}
+      <section className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-2xl font-semibold">Work</h1>
+        <div className="flex flex-wrap gap-2 text-sm">
+          <button onClick={() => setFilter("ALL")} className={`rounded-full border px-3 py-1 ${filter === "ALL" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>All</button>
+          <button onClick={() => setFilter("PRODUCTION")} className={`rounded-full border px-3 py-1 ${filter === "PRODUCTION" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>Production</button>
+          <button onClick={() => setFilter("CONCEPT")} className={`rounded-full border px-3 py-1 ${filter === "CONCEPT" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>Concept</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* 썸네일 3:1 카드 그리드 */}
+      <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+  {visible.map((p) => (
+<Link
+  key={p.id}
+  href={`/work/${p.id}`}
+  className="group block focus:outline-none text-white visited:text-white no-underline"
+  style={{ color: '#fff' }}
+>
+  <article
+  className="rounded-xl overflow-hidden border border-neutral-200/60 bg-white
+             transition-shadow duration-300 ease-out
+             hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,.35)]
+             focus-visible:ring-2 focus-visible:ring-black/60"
+>
+  <div className="relative isolate overflow-hidden" style={{ aspectRatio: '3 / 1' }}>
+    {/* 이미지 (맨 뒤) */}
+    <Image
+      src={p.thumb ?? p.slides[0]}
+      alt={p.title}
+      fill
+      sizes="(min-width:1024px) 33vw, 100vw"
+      className="z-0 object-cover transition duration-300 ease-out
+                 brightness-[.82] group-hover:brightness-100 group-hover:scale-[1.03]
+                 will-change-transform"
+    />
+
+    {/* 어둡게 → hover 시 사라짐 (텍스트 아래로 가게 z-10) */}
+    <div className="absolute inset-0 z-10 bg-black/30 opacity-100
+                    transition-opacity duration-300 ease-out group-hover:opacity-0" />
+
+    {/* 중앙 자막 (정말 맨 위로 올림) */}
+    <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-start pl-[32px] sm:pl-[36px] md:pl-[40px]">
+  <span className="font-brand text-white text-left select-none
+                   [font-size:clamp(18px,3.4vw,54px)]
+                   leading-tight tracking-tight
+                   drop-shadow-[0_3px_14px_rgba(0,0,0,.65)]
+                   transition duration-300 ease-out
+                   translate-y-[30px]
+                   group-hover:translate-y-[34px]"
+                   
+                   >
+    {p.subtitle ?? p.title}
+  </span>
+</div>
+
+  </div>
+</article>
+</Link>
+
+  ))}
+</section>
+
+      <section id="contact" className="mt-12 max-w-3xl">
+        <h2 className="text-2xl font-semibold">Contact</h2>
+        <p className="mt-2 text-neutral-700">Open to collaboration, roles, and studio inquiries.</p>
+        <a href="mailto:you@example.com" className="inline-block mt-3 rounded-full bg-black text-white px-5 py-2 text-sm">Email me</a>
+      </section>
+    </main>
   );
 }
