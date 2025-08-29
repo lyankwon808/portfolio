@@ -1,9 +1,21 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 // 경로가 맞다면 그대로, 절대 경로를 쓰면 더 안전합니다: import { projects } from "@/lib/projects";
 import { projects } from "../lib/projects";
+import site from "@/lib/site";
+
+const subject = encodeURIComponent("Portfolio inquiry");
+const gmailHref =
+  `https://mail.google.com/mail/?view=cm` +
+  `&to=${encodeURIComponent(site.email)}` +
+  `&su=${subject}`;
+
+<a href={gmailHref} target="_blank" rel="noopener noreferrer" aria-label="Email" className="group inline-flex ...">
+  {/* 이메일 SVG 아이콘 */}
+</a>
 
 export default function Home() {
   const [filter, setFilter] =
@@ -94,52 +106,15 @@ export default function Home() {
     Open to collaboration, roles, and studio inquiries.
   </p>
 
-  <div className="mt-5 flex items-center gap-3">
-    {/* Email */}
-    <a
-      href="lyankwon808@gmail.com?subject=Portfolio%20inquiry"
-      aria-label="Email"
-      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-black hover:text-white transition"
-    >
-      {/* Envelope icon */}
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22" aria-hidden="true">
-        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-        <path d="M3 7l9 6 9-6"></path>
-      </svg>
-      <span className="sr-only">Email</span>
+  <div className="mt-4 flex gap-3">
+    <a href={`mailto:${site.email}?subject=Portfolio%20inquiry`} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="Email">
+      {/* …동일한 이메일 아이콘… */}
     </a>
-
-    {/* LinkedIn */}
-    <a
-      href="https://www.linkedin.com/in/hyukwoo-leon-kwon-33190161/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="LinkedIn"
-      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-[#0a66c2] hover:text-white transition"
-    >
-      {/* LinkedIn logo */}
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-        <path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM.5 8.5h4.95V24H.5zM8.5 8.5h4.74v2.1h.07c.66-1.25 2.28-2.57 4.69-2.57 5.01 0 5.94 3.3 5.94 7.58V24h-4.95v-6.7c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54V24H8.5z"/>
-      </svg>
-      <span className="sr-only">LinkedIn</span>
+    <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="LinkedIn">
+      {/* …동일한 LinkedIn 아이콘… */}
     </a>
-
-    {/* Instagram */}
-    <a
-      href="https://instagram.com/leon_h_kwon"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Instagram"
-      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-gradient-to-tr hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white transition"
-      style={{ backgroundClip: "padding-box" }}
-    >
-      {/* Instagram outline */}
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-        <circle cx="12" cy="12" r="4"></circle>
-        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
-      </svg>
-      <span className="sr-only">Instagram</span>
+    <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="Instagram">
+      {/* …동일한 Instagram 아이콘… */}
     </a>
   </div>
 </section>
