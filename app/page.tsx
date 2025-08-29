@@ -3,27 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-// 경로가 맞다면 그대로, 절대 경로를 쓰면 더 안전합니다: import { projects } from "@/lib/projects";
+
+// 절대 경로가 세팅돼 있다면 이게 더 안전합니다. (tsconfig paths 필요)
+// import { projects } from "@/lib/projects";
 import { projects } from "../lib/projects";
-import site from "@/lib/site";
 
-const subject = encodeURIComponent("Portfolio inquiry");
-const gmailHref =
-  `https://mail.google.com/mail/?view=cm` +
-  `&to=${encodeURIComponent(site.email)}` +
-  `&su=${subject}`;
-
-<a href={gmailHref} target="_blank" rel="noopener noreferrer" aria-label="Email" className="group inline-flex ...">
-  {/* 이메일 SVG 아이콘 */}
-</a>
+import ContactMenu from "./components/ContactMenu";
 
 export default function Home() {
-  const [filter, setFilter] =
-    useState<"ALL" | "PRODUCTION" | "CONCEPT">("ALL");
+  const [filter, setFilter] = useState<"ALL" | "PRODUCTION" | "CONCEPT">("ALL");
 
   const visible = useMemo(() => {
-    if (filter === "PRODUCTION") return projects.filter(p => p.type === "Production");
-    if (filter === "CONCEPT")    return projects.filter(p => p.type === "Concept");
+    if (filter === "PRODUCTION") return projects.filter((p) => p.type === "Production");
+    if (filter === "CONCEPT") return projects.filter((p) => p.type === "Concept");
     return projects;
   }, [filter]);
 
@@ -33,16 +25,28 @@ export default function Home() {
       <section className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-semibold">Work</h1>
         <div className="flex flex-wrap gap-2 text-sm">
-          <button onClick={() => setFilter("ALL")}
-            className={`rounded-full border px-3 py-1 ${filter === "ALL" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>
+          <button
+            onClick={() => setFilter("ALL")}
+            className={`rounded-full border px-3 py-1 ${
+              filter === "ALL" ? "bg-black text-white" : "hover:bg-neutral-50"
+            }`}
+          >
             All
           </button>
-          <button onClick={() => setFilter("PRODUCTION")}
-            className={`rounded-full border px-3 py-1 ${filter === "PRODUCTION" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>
+          <button
+            onClick={() => setFilter("PRODUCTION")}
+            className={`rounded-full border px-3 py-1 ${
+              filter === "PRODUCTION" ? "bg-black text-white" : "hover:bg-neutral-50"
+            }`}
+          >
             Production
           </button>
-          <button onClick={() => setFilter("CONCEPT")}
-            className={`rounded-full border px-3 py-1 ${filter === "CONCEPT" ? "bg-black text-white" : "hover:bg-neutral-50"}`}>
+          <button
+            onClick={() => setFilter("CONCEPT")}
+            className={`rounded-full border px-3 py-1 ${
+              filter === "CONCEPT" ? "bg-black text-white" : "hover:bg-neutral-50"
+            }`}
+          >
             Concept
           </button>
         </div>
@@ -64,7 +68,6 @@ export default function Home() {
                          focus-visible:ring-2 focus-visible:ring-black/60"
             >
               <div className="relative isolate overflow-hidden" style={{ aspectRatio: "3 / 1" }}>
-                {/* 이미지 */}
                 <Image
                   src={p.thumb ?? p.slides[0]}
                   alt={p.title}
@@ -74,12 +77,10 @@ export default function Home() {
                              brightness-[.82] group-hover:brightness-100 group-hover:scale-[1.03]
                              will-change-transform"
                 />
-
-                {/* 어둡게 → hover에서 사라짐 */}
-                <div className="absolute inset-0 z-10 bg-black/30 opacity-100
-                                transition-opacity duration-300 ease-out group-hover:opacity-0" />
-
-                {/* 자막 (오버레이 위에 오도록 z-30) */}
+                <div
+                  className="absolute inset-0 z-10 bg-black/30 opacity-100
+                             transition-opacity duration-300 ease-out group-hover:opacity-0"
+                />
                 <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-start pl-[32px] sm:pl-[36px] md:pl-[40px]">
                   <span
                     className="font-brand text-white text-left select-none
@@ -98,28 +99,10 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Contact */}
-{/* Contact (아이콘 버튼 버전) */}
-<section id="contact" className="mt-12 max-w-3xl">
-  <h2 className="text-2xl font-semibold">Contact</h2>
-  <p className="mt-2 text-neutral-700">
-    Open to collaboration, roles, and studio inquiries.
-  </p>
-
-  <div className="mt-4 flex gap-3">
-    <a href={`mailto:${site.email}?subject=Portfolio%20inquiry`} className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="Email">
-      {/* …동일한 이메일 아이콘… */}
-    </a>
-    <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="LinkedIn">
-      {/* …동일한 LinkedIn 아이콘… */}
-    </a>
-    <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 hover:bg-neutral-50" aria-label="Instagram">
-      {/* …동일한 Instagram 아이콘… */}
-    </a>
-  </div>
-</section>
-
-
+      {/* Contact (아이콘 버튼) */}
+      <section id="contact" className="mt-12">
+        <ContactMenu />
+      </section>
     </main>
   );
 }
