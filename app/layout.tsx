@@ -1,7 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
-import Nav from "./components/Nav";
 import localFont from "next/font/local";
 
 const brandon = localFont({
