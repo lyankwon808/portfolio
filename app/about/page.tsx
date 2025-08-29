@@ -1,3 +1,4 @@
+import Link from "next/link";
 export const metadata = { title: "About — Kwon Hyukwoo" };
 
 export default function AboutPage() {
@@ -18,7 +19,9 @@ export default function AboutPage() {
       </ul>
 
       <div className="mt-10">
-        <a href="/" className="underline underline-offset-4">← Back to Work</a>
+        <Link href="/" className="underline underline-offset-4">
+  ↩ Back to Work
+</Link>
       </div>
     </main>
   );
