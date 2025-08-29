@@ -87,40 +87,63 @@ export default function Home() {
       </section>
 
       {/* Contact */}
+{/* Contact (아이콘 버튼 버전) */}
 <section id="contact" className="mt-12 max-w-3xl">
   <h2 className="text-2xl font-semibold">Contact</h2>
   <p className="mt-2 text-neutral-700">
     Open to collaboration, roles, and studio inquiries.
   </p>
 
-  <ul className="mt-4 space-y-2 text-neutral-800">
-    <li>
-      <a href="mailto:you@example.com" className="underline">
-        ✉️ you@example.com
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://www.linkedin.com/in/your-id"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline"
-      >
-        in LinkedIn
-      </a>
-    </li>
-    <li>
-      <a
-        href="https://instagram.com/your-id"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline"
-      >
-        📷 Instagram
-      </a>
-    </li>
-  </ul>
+  <div className="mt-5 flex items-center gap-3">
+    {/* Email */}
+    <a
+      href="lyankwon808@gmail.com?subject=Portfolio%20inquiry"
+      aria-label="Email"
+      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-black hover:text-white transition"
+    >
+      {/* Envelope icon */}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3 7l9 6 9-6"></path>
+      </svg>
+      <span className="sr-only">Email</span>
+    </a>
+
+    {/* LinkedIn */}
+    <a
+      href="https://www.linkedin.com/in/hyukwoo-leon-kwon-33190161/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-[#0a66c2] hover:text-white transition"
+    >
+      {/* LinkedIn logo */}
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM.5 8.5h4.95V24H.5zM8.5 8.5h4.74v2.1h.07c.66-1.25 2.28-2.57 4.69-2.57 5.01 0 5.94 3.3 5.94 7.58V24h-4.95v-6.7c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54V24H8.5z"/>
+      </svg>
+      <span className="sr-only">LinkedIn</span>
+    </a>
+
+    {/* Instagram */}
+    <a
+      href="https://instagram.com/leon_h_kwon"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-300 text-neutral-900 hover:bg-gradient-to-tr hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white transition"
+      style={{ backgroundClip: "padding-box" }}
+    >
+      {/* Instagram outline */}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+      </svg>
+      <span className="sr-only">Instagram</span>
+    </a>
+  </div>
 </section>
+
 
     </main>
   );
