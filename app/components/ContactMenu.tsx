@@ -1,51 +1,81 @@
-// app/components/ContactMenu.tsx
-import site from "../../lib/site";
+"use client";
+
+import Image from "next/image";
+import site from "@/lib/site";
+
+type IconLinkProps = {
+  href: string;
+  label: string;
+  src: string;     // /public 기준 경로 (/icons/...)
+  size?: number;   // 버튼 지름
+  icon?: number;   // 아이콘 픽셀 크기
+  newTab?: boolean;
+};
+
+function IconLink({
+  href,
+  label,
+  src,
+  size = 44,
+  icon = 24,
+  newTab = true,
+}: IconLinkProps) {
+  return (
+    <a
+      href={href}
+      {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      aria-label={label}
+      className="
+        group inline-flex items-center justify-center
+        rounded-full border border-neutral-300
+        hover:border-purple-600 hover:bg-purple-50
+        transition-colors
+      "
+      style={{ width: size, height: size }}
+    >
+      <span className="sr-only">{label}</span>
+      <Image
+        src={src}             // 예: "/icons/email@2x.png"
+        alt=""
+        width={icon}
+        height={icon}
+        // PNG가 또렷하게 보이도록(가능한 브라우저에서)
+        style={{ imageRendering: "crisp-edges" as any }}
+      />
+    </a>
+  );
+}
 
 export default function ContactMenu() {
+  // 기본 메일앱 열기(간단/확실)
+  const emailHref = `mailto:${site.email}?subject=${encodeURIComponent(
+    "Portfolio inquiry"
+  )}`;
+
   return (
-    <div className="flex items-center gap-3">
-      {/* Email */}
-      <a
-        href={`mailto:${site.email}?subject=Portfolio%20inquiry`}
-        aria-label="Email"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border hover:bg-neutral-50"
-      >
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <rect x="3" y="7" width="18" height="12" rx="2"></rect>
-          <path d="M3 9l9 6 9-6" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-        <span className="sr-only">Email</span>
-      </a>
-
-      {/* LinkedIn */}
-      <a
+    <div className="mt-4 flex items-center gap-8">
+      <IconLink
+        href={emailHref}
+        label="Email"
+        src="/icons/email@2x.png"
+        size={44}
+        icon={24}
+        newTab={false}
+      />
+      <IconLink
         href={site.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border hover:bg-neutral-50"
-      >
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-          <path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8.5h4.9V24H.5V8.5zM9 8.5h4.7v2.11h.07c.66-1.24 2.27-2.55 4.67-2.55C22.9 8.06 24 10.1 24 13.43V24h-4.9v-9.2c0-2.2-.79-3.7-2.77-3.7-1.51 0-2.4 1.02-2.8 2.01-.14.34-.18.82-.18 1.3V24H8.99c.06-10.84.01-15.5.01-15.5z"/>
-        </svg>
-        <span className="sr-only">LinkedIn</span>
-      </a>
-
-      {/* Instagram */}
-      <a
+        label="LinkedIn"
+        src="/icons/linkedin@2x.png"
+        size={44}
+        icon={24}
+      />
+      <IconLink
         href={site.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border hover:bg-neutral-50"
-      >
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
-        </svg>
-        <span className="sr-only">Instagram</span>
-      </a>
+        label="Instagram"
+        src="/icons/instagram@2x.png"
+        size={44}
+        icon={24}
+      />
     </div>
   );
 }
