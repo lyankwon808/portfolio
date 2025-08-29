@@ -100,9 +100,9 @@ export default function Home() {
       </section>
 
       {/* Contact (아이콘 버튼) */}
-      <section id="contact" className="mt-12">
-        <ContactMenu />
-      </section>
+      <section id="contact" className="relative z-50 mt-12">
+  <ContactMenu />
+</section>
     </main>
   );
 }
