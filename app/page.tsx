@@ -87,18 +87,41 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="mt-12 max-w-3xl">
-        <h2 className="text-2xl font-semibold">Contact</h2>
-        <p className="mt-2 text-neutral-700">
-          Open to collaboration, roles, and studio inquiries.
-        </p>
-        <a
-          href="mailto:you@example.com"
-          className="inline-block mt-3 rounded-full bg-black text-white px-5 py-2 text-sm"
-        >
-          Email me
-        </a>
-      </section>
+<section id="contact" className="mt-12 max-w-3xl">
+  <h2 className="text-2xl font-semibold">Contact</h2>
+  <p className="mt-2 text-neutral-700">
+    Open to collaboration, roles, and studio inquiries.
+  </p>
+
+  <ul className="mt-4 space-y-2 text-neutral-800">
+    <li>
+      <a href="mailto:you@example.com" className="underline">
+        ✉️ you@example.com
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/your-id"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline"
+      >
+        in LinkedIn
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://instagram.com/your-id"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline"
+      >
+        📷 Instagram
+      </a>
+    </li>
+  </ul>
+</section>
+
     </main>
   );
 }
