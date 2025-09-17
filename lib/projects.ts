@@ -87,7 +87,14 @@ export const projects: Project[] = [
     year: "2022",
     tags: ["Concept", "Space"],
     thumb: "/images/virgin-00.jpg",
-    slides: ["/images/virgin-01.jpg","/images/virgin-02.jpg","/images/virgin-03.jpg","/images/virgin-04.jpg","/images/virgin-05.jpg","/images/virgin-06.jpg","/images/virgin-07.jpg","/images/virgin-08.jpg"],
+    slides: ["/images/virgin-01.jpg",
+      "/images/virgin-02.jpg",
+      "/images/virgin-03.jpg",
+      "/images/virgin-04.jpg",
+      "/images/virgin-05.jpg",
+      "/images/virgin-06.jpg",
+      "/images/virgin-07.jpg",
+      "/images/virgin-08.jpg"],
     blurbEN: "Human-centric mobility for low‑gravity operations on Mars.",
     blurbKR: "화성 저중력 환경에서의 휴먼 센트릭 모빌리티 설계.",
   },
@@ -102,7 +109,14 @@ export const projects: Project[] = [
     year: "2024",
     tags: ["Concept", "HMI", "UX", "Prototype"],
     thumb: "/images/bmw-00.jpg",
-    slides: ["/images/bmw-01.jpg","/images/bmw-02.jpg","/images/bmw-03.jpg","/images/bmw-04.jpg","/images/bmw-05.jpg","/images/bmw-06.jpg","/images/bmw-07.jpg"],
+    slides: ["/images/bmw-01.jpg",
+      "/images/bmw-02.jpg",
+      "/images/bmw-03.jpg",
+      "/images/bmw-04.jpg",
+      "/images/bmw-05.jpg",
+      "/images/bmw-06.jpg",
+      "/images/bmw-07.jpg",
+      "/images/bmw-08.jpg"],
     blurbEN:
       "Reactive interface minimizing visible controls while enhancing trust.",
     blurbKR:
@@ -123,7 +137,11 @@ export const projects: Project[] = [
     year: "2021–2023",
     tags: ["Production", "Interior"],
     thumb: "/images/ONVO-00.jpg",
-    slides: ["/images/ONVO-01.jpg","/images/ONVO-02.jpg","/images/ONVO-03.jpg","/images/ONVO-04.jpg","/images/ONVO-05.jpg"],
+    slides: ["/images/ONVO-01.jpg",
+      "/images/ONVO-02.jpg",
+      "/images/ONVO-03.jpg",
+      "/images/ONVO-04.jpg",
+      "/images/ONVO-05.jpg"],
     blurbEN:
       "Contributed within a cross‑functional team from early development through production readiness for the ONVO L60 program.",
     blurbKR:
@@ -141,7 +159,9 @@ export const projects: Project[] = [
     year: "2023–2024",
     tags: ["Concept", "Exterior", "Interior"],
     thumb: "/images/sunflower-00.jpg",
-    slides: ["/images/sunflower-01.jpg","/images/sunflower-02.jpg","/images/sunflower-03.jpg"],
+    slides: ["/images/sunflower-01.jpg",
+      "/images/sunflower-02.jpg",
+      "/images/sunflower-03.jpg"],
     blurbEN:
       "Studio collaboration on a show‑car concept exploring brand symbolism and packaging.",
     blurbKR:
@@ -159,7 +179,10 @@ export const projects: Project[] = [
     year: "2019",
     tags: ["Production", "Interior", "EV"],
     thumb: "/images/e300-00.jpg",
-    slides: ["/images/e300-01.jpg","/images/e300-02.jpg","/images/e300-03.jpg","/images/e300-04.jpg"],
+    slides: ["/images/e300-01.jpg",
+      "/images/e300-02.jpg",
+      "/images/e300-03.jpg",
+      "/images/e300-04.jpg"],
     blurbEN:
       "Worked with engineering, CMF, and suppliers to deliver an approachable micro‑EV interior.",
     blurbKR:
@@ -177,7 +200,10 @@ export const projects: Project[] = [
     year: "2018–2019",
     tags: ["Production", "Interior", "MPV"],
     thumb: "/images/RM5-00.jpg",
-    slides: ["/images/RM5-01.jpg","/images/RM5-02.jpg","/images/RM5-03.jpg","/images/RM5-04.jpg"],
+    slides: ["/images/RM5-01.jpg",
+      "/images/RM5-02.jpg",
+      "/images/RM5-03.jpg",
+      "/images/RM5-04.jpg"],
     blurbEN:
       "Collaborated across teams to package a family‑oriented MPV interior from concept to feasibility.",
     blurbKR:
