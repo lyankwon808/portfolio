@@ -1,6 +1,8 @@
-// app/layout.tsx (일부)
+import "./globals.css";   // ✅ 전역 스타일 복구
 import Link from "next/link";
-import ContactMenu from "./components/ContactMenu"; // 원하면 헤더에도 표시
+import ContactMenu from "./components/ContactMenu";
+import { Analytics } from "@vercel/analytics/react";
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,10 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Kwon Hyukwoo
             </Link>
 
-            {/* 헤더 우측에 아이콘도 보이고 싶으면 이 줄 주석 해제 */}
+        
             {/* <div className="hidden sm:block"><ContactMenu /></div> */}
 
-            {/* 반드시 /#contact 가 아니라 /contact 로! */}
+
             <Link href="/contact" className="rounded-full border px-3 py-1 text-xs hover:bg-neutral-50">
               Contact
             </Link>
@@ -27,7 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="mx-auto max-w-6xl px-4 py-10 text-sm text-neutral-500">
           © {new Date().getFullYear()} Kwon Hyukwoo
         </footer>
+
+         <Analytics />
       </body>
     </html>
   );
 }
+
