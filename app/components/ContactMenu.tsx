@@ -18,9 +18,8 @@ function IconLink({ href, label, src, size = 40 }: IconLinkProps) {
       rel="noopener noreferrer"
       aria-label={label}
       className="inline-flex size-[56px] items-center justify-center
-                 rounded-full bg-white/90 shadow-sm hover:shadow-md transition
-                 border-0 ring-0 outline-none
-                 focus-visible:outline-2 focus-visible:outline-neutral-300 focus-visible:outline-offset-2"
++            rounded-full bg-white/90 transition
++            border-0 ring-0 outline-none overflow-hidden"
       // ↑ 완전히 없애고 싶으면 focus-visible… 3개도 지워도 됨
     >
       <Image
