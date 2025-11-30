@@ -17,9 +17,12 @@ export default async function ProjectPage({
       <header className="flex items-baseline justify-between">
         <div>
           <h1 className="text-2xl font-semibold">{p.title}</h1>
-          <p className="text-sm text-neutral-500">
-             {p.period && <span> · {p.period}</span>}
-          </p>
+         <p className="text-sm text-neutral-500">
+  {p.company}
+  {p.type === "Production" && (p.period || p.year) && (
+    <span> · {p.period ?? p.year}</span>
+  )}
+</p>
         </div>
         <div className="flex items-center gap-2">
           <Link href="/" className="text-sm underline underline-offset-4">
